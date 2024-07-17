@@ -6,14 +6,11 @@ services:
     volumes:
       - "./docker/mongodb_data:/data/db"
     restart: "on-failure"
-#    networks:
-#      - pg-db
 
   opensearch:
     image: "opensearchproject/opensearch:2.12.0"
     volumes:
       - "./docker/opensearch-data:/usr/share/opensearch/data"
-#      - "./docker/opensearch.yml:/usr/share/opensearch/config/opensearch.yml"
     environment:
       - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m"
       - "bootstrap.memory_lock=true"
@@ -35,8 +32,6 @@ services:
     ports:
       - "9200:9200"
       - "9300:9300"
-#    networks:
-#      - pg-db
 
   graylog:
     image: graylog/graylog:5.2
@@ -69,8 +64,6 @@ services:
       - "./docker/graylog_data:/usr/share/graylog/data/data"
       - "./docker/graylog_journal:/usr/share/graylog/data/journal"
     restart: "on-failure"
-#    networks:
-#      - pg-db
 
 volumes:
   mongodb:
